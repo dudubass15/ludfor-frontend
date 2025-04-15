@@ -1,0 +1,53 @@
+@font-face {
+    font-family: "Archivo-bold";
+    src: url("Archivo-Bold.woff2") format("woff2"),
+        url("Archivo-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Archivo-extrabold";
+    src: url("Archivo-ExtraBold.woff2") format("woff2"),
+        url("Archivo-ExtraBold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Archivo-extralight";
+    src: url("Archivo-ExtraLight.woff2") format("woff2"),
+        url("Archivo-ExtraLight.woff") format("woff");
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Archivo-light";
+    src: url("Archivo-Light.woff2") format("woff2"),
+        url("Archivo-Light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Archivo-black";
+    src: url("Archivo-Black.woff2") format("woff2"),
+        url("Archivo-Black.woff") format("woff");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Archivo-regular";
+    src: url("Archivo-Regular.woff2") format("woff2"),
+        url("Archivo-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

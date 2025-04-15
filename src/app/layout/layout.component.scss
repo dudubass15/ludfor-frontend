@@ -1,0 +1,22 @@
+:host {
+    .list-group-item {
+        display: flex;
+        flex-direction: row;
+        column-gap: 10px;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    // .list-group-item.active {
+    //     --bs-success-bg-subtle: #fff;
+    //     --bs-success-text-emphasis: #0a3622;
+    //     --bs-success-text-emphasis: #0a3622;
+    //     --bs-list-group-active-color: var(--bs-success-bg-subtle);
+    //     --bs-list-group-active-bg: var(--bs-success-text-emphasis);
+    //     --bs-list-group-active-border-color: var(--bs-success-text-emphasis);
+    //     z-index: 2;
+    //     color: var(--bs-list-group-active-color);
+    //     background-color: var(--bs-list-group-active-bg);
+    //     border-color: var(--bs-list-group-active-border-color);
+    // }
+}

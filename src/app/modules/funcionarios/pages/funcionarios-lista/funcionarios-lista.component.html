@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="fs-2">Funcionários</h1>
+    <button type="button" class="btn btn-success ps-3 pe-3" (click)="novoFuncionario()">Cadastrar Funcionário</button>
+</div>
+
+<table class="table" *ngIf="funcionarios && funcionarios.length > 0; else default;">
+    <thead>
+        <tr>
+            <th scope="col" class="col">Nome</th>
+            <th scope="col" class="col">E-mail</th>
+            <th scope="col" class="col">Celular</th>
+            <th scope="col" class="col">Ramal</th>
+            <th scope="col" class="col">Ativo</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let funcionario of funcionarios">
+            <td>{{ funcionario.nome }}</td>
+            <td>{{ funcionario.email }}</td>
+            <td>{{ funcionario.celular }}</td>
+            <td>{{ funcionario.ramal }}</td>
+            <td>{{ funcionario.ativo }}</td>
+            <td class="d-flex gap-2 justify-content-end">
+                <button type="button" class="btn btn-sm btn-outline-secondary" (click)="atualizarFuncionario(funcionario.id)">
+                    <i class="bi bi-pencil-square"></i>
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-danger" (click)="deletarFuncionario(funcionario.id)">
+                    <i class="bi bi-trash3"></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<ng-template #default>
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center align-items-center">
+            <ng-container *ngIf="!loading; else load">
+                <div class="alert alert-light p-4 w-100" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                    Ops! Não conseguimos encontrar nenhum resultado.
+                </div>
+            </ng-container>
+            <ng-template #load>
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</ng-template>

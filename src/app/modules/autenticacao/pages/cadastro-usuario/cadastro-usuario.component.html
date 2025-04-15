@@ -1,0 +1,33 @@
+<div class="container ps-4 pe-4 pe-lg-5 ps-lg-5 d-flex flex-column justify-content-center h-100 row-gap-4">
+    <div class="w-100 d-flex flex-column align-items-start row-gap-3">
+        <button type="button" (click)="previous()"
+            class="btn d-flex p-0 m-0 justify-content-center align-items-center mb-4" title="Voltar">
+            <i class="bi bi-arrow-left"></i>
+        </button>
+        <h1 class="fs-1 mb-0">Cadastre-se</h1>
+        <p>Por favor, preencha os campos abaixo para criar a sua conta.</p>
+    </div>
+    <form class="w-100 mb-4">
+        <div class="mb-4">
+            <label for="name" class="form-label">Nome completo</label>
+            <input type="text" class="form-control" id="name">
+        </div>
+        <div class="mb-4">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="email">
+        </div>
+        <div class="mb-4">
+            <label for="tel" class="form-label">Telefone</label>
+            <input type="text" mask="(00) 0.0000-0000" class="form-control" id="tel">
+        </div>
+        <div class="mb-4">
+            <label for="username" class="form-label">Usuário</label>
+            <input type="text" class="form-control" id="username">
+        </div>
+        <div class="mb-4">
+            <label for="senha" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="senha">
+        </div>
+        <button type="submit" class="btn btn-primary w-100 mt-2">Cadastrar</button>
+    </form>
+</div>
