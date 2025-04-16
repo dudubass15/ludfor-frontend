@@ -8,14 +8,14 @@
 </div>
 
 <form [formGroup]="form" class="needs-validation" [ngClass]="{'was-validated': form.touched && form.invalid}" [attr.novalidate]="form.touched && form.invalid ? true : null">
-    <row class="mb-3" getFormControl [form]="form" [field]="'nome'" #nomeControl="getFormControl">
+    <div class="mb-3" getFormControl [form]="form" [field]="'nome'" #nomeControl="getFormControl">
         <app-input
             [control]="nomeControl.getFormControl()"
             [label]="'Nome'"
             [required]="true"
             id="nome"
         ></app-input>
-    </row>
+    </div>
     <div class="mb-3" getFormControl [form]="form" [field]="'email'" #emailControl="getFormControl">
         <app-input
             [control]="emailControl.getFormControl()"
