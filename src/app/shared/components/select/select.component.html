@@ -1,6 +1,8 @@
 <div class="mb-3">
     <label *ngIf="label" for="{{id}}" class="form-label">{{ label }}</label>
-    <input [type]="type" class="form-control pt-2 pb-2" [formControl]="control" [id]="id" [placeholder]="placeholder" [attr.required]="required" [mask]="mask"/>
+    <select class="form-select pt-2 pb-2" aria-label="Select" [formControl]="control" [id]="id" [attr.required]="required">
+        <option *ngFor="let option of options" [attr.selected]="option.selected ? true : null" [value]="option.value">{{ option.label }}</option>
+    </select>
     <div *ngIf="control.invalid && control.touched" class="text-danger">
         <small *ngIf="control.invalid && control.errors && control.errors['required']">Este campo é obrigatório.</small>
         <small *ngIf="control.invalid && control.errors && control.errors['minlength']">
