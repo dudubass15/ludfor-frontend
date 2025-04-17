@@ -12,14 +12,6 @@ const routes: Routes = [
         canActivate: [AutenticacaoGuardService],
     },
     {
-        path: 'usuarios',
-        loadChildren: () =>
-            import('./modules/usuarios/usuarios.module').then(
-                (m) => m.UsuariosModule
-            ),
-        canActivate: [AutenticacaoGuardService],
-    },
-    {
         path: 'auth',
         loadChildren: () =>
             import('./modules/autenticacao/autenticacao.module').then(
