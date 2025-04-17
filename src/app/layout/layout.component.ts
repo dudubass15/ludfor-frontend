@@ -10,8 +10,6 @@ import { ToastService } from '../shared/services/toast/toast.service';
     styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent {
-    public fixed: boolean = false;
-
     private _destroy$ = new Subject<void>();
 
     public constructor(

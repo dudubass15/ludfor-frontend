@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from 'src/app/layout/layout.component';
-import { UsuariosListaComponent } from './pages/usuarios-lista/usuarios-lista.component';
 import { UsuariosCadastroComponent } from './pages/usuarios-cadastro/usuarios-cadastro.component';
 
 const routes: Routes = [
@@ -10,10 +9,6 @@ const routes: Routes = [
         component: LayoutComponent,
         children: [
             {
-                path: '',
-                component: UsuariosListaComponent
-            },
-            {
                 path: 'cadastro',
                 component: UsuariosCadastroComponent
             }
@@ -21,7 +16,7 @@ const routes: Routes = [
     },
     {
         path: '',
-        redirectTo: 'funcionarios',
+        redirectTo: '/',
         pathMatch: 'full',
     }
 ];

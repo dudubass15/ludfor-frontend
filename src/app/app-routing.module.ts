@@ -4,7 +4,7 @@ import { AutenticacaoGuardService } from './guards/autenticacao.guard';
 
 const routes: Routes = [
     {
-        path: 'funcionarios',
+        path: '',
         loadChildren: () =>
             import('./modules/funcionarios/funcionarios.module').then(
                 (m) => m.FuncionariosModule
@@ -28,7 +28,7 @@ const routes: Routes = [
     },
     {
         path: '**',
-        redirectTo: '/funcionarios',
+        redirectTo: '/',
         pathMatch: 'full',
     }
 ];

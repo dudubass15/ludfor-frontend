@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { ATIVO_OPTIONS } from 'src/app/shared/constants/ativos.constants';
@@ -39,7 +39,7 @@ export class FuncionariosCadastroComponent implements OnInit, OnDestroy {
 
     public constructor(
         private router: Router,
-        private funcionarioService: FuncionariosService,
+        private employeesService: FuncionariosService,
         private toastService: ToastService,
         private activateRouter: ActivatedRoute
     ) {}
@@ -48,7 +48,8 @@ export class FuncionariosCadastroComponent implements OnInit, OnDestroy {
         this.activateRouter.queryParams.pipe(takeUntil(this._destroy$)).subscribe((params) => {
             this.id = params['id'];
             if (this.id) {
-                this.getFuncionarioData(parseInt(this.id));
+                this.getEmployeeData(parseInt(this.id));
+                return;
             }
         });
 
@@ -62,36 +63,52 @@ export class FuncionariosCadastroComponent implements OnInit, OnDestroy {
     }
 
     public previous(): void {
-        this.router.navigate(['/funcionarios']);
+        this.router.navigate(['/']);
     }
 
-    public setOptionDefaultAtivo(): void {
+    public setOptionDefaultAtivo(value?: boolean): void {
+        if (value !== undefined) {
+            this.ativoOptions.forEach((option) => option.selected = false);
+            const option = this.ativoOptions.find((option) => option.value === value);
+            if (option) option.selected = true;
+            this.form.get('ativo')?.setValue(option?.label);
+            return;
+        }
+
         const option = this.ativoOptions.find((option) => option.selected);
         this.form.get('ativo')?.setValue(option?.selected);
     }
 
-    public setOptionDefaultEstado(): void {
+    public setOptionDefaultEstado(label?: string): void {
+        if (label) {
+            this.estados.forEach((estado) => estado.selected = false);
+            const estado = this.estados.find((estado) => estado.label === label);
+            if (estado) estado.selected = true;
+            this.form.get('estado')?.setValue(estado?.label);
+            return;
+        }
+
         const estado = this.estados.find((estado) => estado.selected);
         this.form.get('estado')?.setValue(estado?.label);
     }
 
-    public getFuncionarioData(id: number): void {
+    public getEmployeeData(id: number): void {
         this.loading = true;
-        const response = this.funcionarioService.getById(id);
+        const response = this.employeesService.getById(id);
         if (response && response.success && response.data) {
             this.form.patchValue({
                 nome: response.data.nome,
                 email: response.data.email,
                 celular: response.data.celular,
-                ativo: response.data.ativo,
                 ramal: response.data.ramal,
                 bairro: response.data.bairro,
                 complemento: response.data.complemento,
                 logradouro: response.data.logradouro,
                 numero: response.data.numero,
                 cidade: response.data.cidade,
-                estado: response.data.estado,
             });
+            this.setOptionDefaultAtivo(response.data.ativo === "true" as any ? true : false);
+            this.setOptionDefaultEstado(response.data.estado);
         } else {
             this.toastService.show(response.error as string, {
                 classname: 'bg-danger text-light',
@@ -105,9 +122,9 @@ export class FuncionariosCadastroComponent implements OnInit, OnDestroy {
         if (this.form.valid) {
             if (this.id) {
                 this.loading = true;
-                const response = this.funcionarioService.edit(parseInt(this.id), this.form.value);
+                const response = this.employeesService.edit(parseInt(this.id), this.form.value);
                 if (response && response.success) {
-                    this.router.navigate(['/funcionarios']);
+                    this.router.navigate(['/']);
                     setTimeout(() => {
                         this.toastService.show('Funcionário atualizado com sucesso', {
                             classname: 'bg-success text-light',
@@ -117,9 +134,9 @@ export class FuncionariosCadastroComponent implements OnInit, OnDestroy {
                 }
                 this.loading = false;
             } else {
-                const response = this.funcionarioService.add(this.form.value);
+                const response = this.employeesService.add(this.form.value);
                 if (response && response.success) {
-                    this.router.navigate(['/funcionarios']);
+                    this.router.navigate(['/']);
                     setTimeout(() => {
                         this.toastService.show('Funcionário cadastrado com sucesso', {
                             classname: 'bg-success text-light',

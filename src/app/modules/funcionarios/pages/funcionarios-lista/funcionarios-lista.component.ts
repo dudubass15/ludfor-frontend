@@ -13,19 +13,19 @@ import { ToastService } from 'src/app/shared/services/toast/toast.service';
 export class FuncionariosListaComponent implements OnInit, OnDestroy {
     public loading = false;
 
-    public funcionarios: FuncionarioInterface[] | null = null;
+    public employees: FuncionarioInterface[] | null = null;
 
     private _destroy$ = new Subject<void>();
 
     public constructor(
         private router: Router,
         private activateRouter: ActivatedRoute,
-        private funcionariosService: FuncionariosService,
+        private employeesService: FuncionariosService,
         private toastService: ToastService
     ) {}
 
     public ngOnInit(): void {
-        this.getFuncionarios();
+        this.getAllEmployees();
     }
 
     public ngOnDestroy(): void {
@@ -33,23 +33,23 @@ export class FuncionariosListaComponent implements OnInit, OnDestroy {
         this._destroy$.complete();
     }
 
-    public getFuncionarios(): void {
+    public getAllEmployees(): void {
         this.loading = true;
-        const response = this.funcionariosService.getAll();
+        const response = this.employeesService.getAll();
         if (response && response.success) {
-            this.funcionarios = response.data;
+            this.employees = response.data;
         }
         this.loading = false;
     }
 
-    public novoFuncionario(): void {
-        this.router.navigate(['funcionarios/cadastro']);
+    public newEmployee(): void {
+        this.router.navigate(['/cadastro']);
     }
 
-    public atualizarFuncionario(id: number | undefined): void {
+    public updateEmployee(id: number | undefined): void {
         if (id) {
             const queryParams = { ...this.activateRouter.snapshot.queryParams, id };
-            this.router.navigate(['funcionarios/editar'], { queryParams });
+            this.router.navigate(['/editar'], { queryParams });
         } else {
             this.toastService.show('ID do funcionário não encontrado!', {
                 classname: 'bg-danger text-light',
@@ -58,15 +58,15 @@ export class FuncionariosListaComponent implements OnInit, OnDestroy {
         }
     }
 
-    public deletarFuncionario(id: number | undefined): void {
+    public deleteEmployee(id: number | undefined): void {
         if (id) {
-            const response = this.funcionariosService.delete(id);
+            const response = this.employeesService.delete(id);
             if (response && response.success) {
                 this.toastService.show('Funcionário deletado com sucesso!', {
                     classname: 'bg-success text-light',
                     delay: 10000,
                 });
-                this.getFuncionarios();
+                this.getAllEmployees();
             }
         } else {
             this.toastService.show('ID do funcionário não encontrado!', {

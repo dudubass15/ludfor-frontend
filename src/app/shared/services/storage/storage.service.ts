@@ -5,8 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class StorageService {
 
-    public constructor() {}
-
     public getItem(key: string): string | null {
         return localStorage.getItem(key);
     }
@@ -25,27 +23,5 @@ export class StorageService {
 
     public hasItem(key: string): boolean {
         return localStorage.getItem(key) !== null;
-    }
-
-    public getAll(): string[] {
-        const items: string[] = [];
-        for (let i = 0; i < localStorage.length; i++) {
-            const key = localStorage.key(i);
-            if (key) {
-                items.push(key);
-            }
-        }
-        return items;
-    }
-
-    public getAllItems(): { [key: string]: string } {
-        const items: { [key: string]: string } = {};
-        for (let i = 0; i < localStorage.length; i++) {
-            const key = localStorage.key(i);
-            if (key) {
-                items[key] = localStorage.getItem(key) || '';
-            }
-        }
-        return items;
     }
 }

@@ -1,4 +1,6 @@
+@import './variables';
+
 .bg-navbar-dark {
-    background-color: #01071d;
-    color: #fff;
+    background-color: $color-blue;
+    color: $color-white;
 }
