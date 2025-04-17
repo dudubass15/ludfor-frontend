@@ -8,10 +8,10 @@ import { CadastroUsuarioComponent } from './pages/cadastro-usuario/cadastro-usua
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputModule } from 'src/app/shared/components/input/input.module';
-import { GetFormControlDirective } from 'src/app/shared/directives/get-form-control/get-form-control.directive';
+import { GetFormControlModule } from 'src/app/shared/directives/get-form-control/get-form-control.module';
 
 @NgModule({
-    declarations: [LoginComponent, WrapperLoginComponent, CadastroUsuarioComponent, GetFormControlDirective],
+    declarations: [LoginComponent, WrapperLoginComponent, CadastroUsuarioComponent],
     imports: [
         CommonModule,
         AutenticacaoRoutingModule,
@@ -21,6 +21,7 @@ import { GetFormControlDirective } from 'src/app/shared/directives/get-form-cont
         FormsModule,
         ReactiveFormsModule,
         InputModule,
+        GetFormControlModule
     ],
 })
 export class AutenticacaoModule {}

@@ -5,15 +5,14 @@ import { FuncionariosListaComponent } from './pages/funcionarios-lista/funcionar
 import { FuncionariosCadastroComponent } from './pages/funcionarios-cadastro/funcionarios-cadastro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputModule } from 'src/app/shared/components/input/input.module';
-import { GetFormControlDirective } from 'src/app/shared/directives/get-form-control/get-form-control.directive';
 import { SelectModule } from 'src/app/shared/components/select/select.module';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
+import { GetFormControlModule } from 'src/app/shared/directives/get-form-control/get-form-control.module';
 
 @NgModule({
     declarations: [
         FuncionariosListaComponent,
-        FuncionariosCadastroComponent,
-        GetFormControlDirective,
+        FuncionariosCadastroComponent
     ],
     imports: [
         CommonModule,
@@ -24,6 +23,7 @@ import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
         SelectModule,
         NgxMaskDirective,
         NgxMaskPipe,
+        GetFormControlModule
     ],
 })
 export class FuncionariosModule {}
