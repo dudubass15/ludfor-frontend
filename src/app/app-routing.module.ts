@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AutenticacaoGuardService } from './guards/autenticacao.guard';
 
 const routes: Routes = [
     {
@@ -8,6 +9,7 @@ const routes: Routes = [
             import('./modules/funcionarios/funcionarios.module').then(
                 (m) => m.FuncionariosModule
             ),
+        canActivate: [AutenticacaoGuardService],
     },
     {
         path: 'usuarios',
@@ -15,6 +17,7 @@ const routes: Routes = [
             import('./modules/usuarios/usuarios.module').then(
                 (m) => m.UsuariosModule
             ),
+        canActivate: [AutenticacaoGuardService],
     },
     {
         path: 'auth',

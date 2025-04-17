@@ -10,5 +10,6 @@
             Máximo de {{ control.errors['maxlength'].requiredLength }} caracteres.
         </small>
         <small *ngIf="control.invalid && control.errors && control.errors['email']">E-mail inválido.</small>
+        <small *ngIf="control.invalid && control.errors && control.errors['registered']">Valor inválido e/ou já cadastrado.</small>
     </div>
 </div>

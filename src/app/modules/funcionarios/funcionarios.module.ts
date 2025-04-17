@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputModule } from 'src/app/shared/components/input/input.module';
 import { GetFormControlDirective } from 'src/app/shared/directives/get-form-control/get-form-control.directive';
 import { SelectModule } from 'src/app/shared/components/select/select.module';
+import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,9 @@ import { SelectModule } from 'src/app/shared/components/select/select.module';
         FormsModule,
         ReactiveFormsModule,
         InputModule,
-        SelectModule
+        SelectModule,
+        NgxMaskDirective,
+        NgxMaskPipe,
     ],
 })
 export class FuncionariosModule {}

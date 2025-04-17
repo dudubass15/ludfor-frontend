@@ -5,5 +5,5 @@ export interface UsuarioInterface extends BaseInterface {
     password: string;
     nome_completo: string;
     email: string;
-    telefone: number;
+    telefone?: number;
 }

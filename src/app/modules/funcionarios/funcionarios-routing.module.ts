@@ -16,8 +16,12 @@ const routes: Routes = [
             {
                 path: 'cadastro',
                 component: FuncionariosCadastroComponent
+            },
+            {
+                path: 'editar',
+                component: FuncionariosCadastroComponent
             }
-        ]
+        ],
     },
     {
         path: '',

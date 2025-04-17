@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastsContainer } from './shared/services/toast/toast.component';
+import { AutenticacaoGuardService } from './guards/autenticacao.guard';
 
 export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     align: 'left',
@@ -24,8 +26,9 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
 
 @NgModule({
     declarations: [AppComponent, LayoutComponent],
-    imports: [BrowserModule, AppRoutingModule, CurrencyMaskModule, NgbModule],
+    imports: [BrowserModule, AppRoutingModule, CurrencyMaskModule, NgbModule, ToastsContainer],
     providers: [
+        AutenticacaoGuardService,
         provideEnvironmentNgxMask(),
         { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig },
     ],
