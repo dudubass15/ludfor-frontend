@@ -1,0 +1,16 @@
+<div class="mb-3">
+    <label *ngIf="label" for="{{id}}" class="form-label">{{ label }}</label>
+    <select class="form-select pt-2 pb-2" aria-label="Select" [formControl]="control" [id]="id" [attr.required]="required">
+        <option *ngFor="let option of options" [attr.selected]="option.selected ? true : null" [value]="option.value">{{ option.label }}</option>
+    </select>
+    <div *ngIf="control.invalid && control.touched" class="text-danger">
+        <small *ngIf="control.invalid && control.errors && control.errors['required']">Este campo é obrigatório.</small>
+        <small *ngIf="control.invalid && control.errors && control.errors['minlength']">
+            Mínimo de {{ control.errors['minlength'].requiredLength }} caracteres.
+        </small>
+        <small *ngIf="control.invalid && control.errors && control.errors['maxlength']">
+            Máximo de {{ control.errors['maxlength'].requiredLength }} caracteres.
+        </small>
+        <small *ngIf="control.invalid && control.errors && control.errors['email']">E-mail inválido.</small>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="mb-3">
+    <label *ngIf="label" for="{{id}}" class="form-label">{{ label }}</label>
+    <input [type]="type" class="form-control pt-2 pb-2" [formControl]="control" [id]="id" [placeholder]="placeholder" [attr.required]="required" [mask]="mask"/>
+    <div *ngIf="control.invalid && control.touched" class="text-danger">
+        <small *ngIf="control.invalid && control.errors && control.errors['required']">Este campo é obrigatório.</small>
+        <small *ngIf="control.invalid && control.errors && control.errors['minlength']">
+            Mínimo de {{ control.errors['minlength'].requiredLength }} caracteres.
+        </small>
+        <small *ngIf="control.invalid && control.errors && control.errors['maxlength']">
+            Máximo de {{ control.errors['maxlength'].requiredLength }} caracteres.
+        </small>
+        <small *ngIf="control.invalid && control.errors && control.errors['email']">E-mail inválido.</small>
+        <small *ngIf="control.invalid && control.errors && control.errors['registered']">Valor inválido e/ou já cadastrado.</small>
+    </div>
+</div>

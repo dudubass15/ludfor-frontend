@@ -1,0 +1,56 @@
+<main class="animate__animated animate__fadeIn">
+    <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center mb-4 row-gap-lg-0 row-gap-2">
+        <h1 class="fs-2 mb-0">Funcionários</h1>
+        <button type="button" class="btn btn-success ps-3 pe-3" (click)="newEmployee()">Cadastrar Funcionário</button>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table" *ngIf="employees && employees.length > 0; else default;">
+            <thead>
+                <tr>
+                    <th scope="col" class="col">Nome</th>
+                    <th scope="col" class="col">E-mail</th>
+                    <th scope="col" class="col">Celular</th>
+                    <th scope="col" class="col">Ramal</th>
+                    <th scope="col" class="col">Ativo</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let employee of employees">
+                    <td>{{ employee.nome }}</td>
+                    <td>{{ employee.email }}</td>
+                    <td>{{ employee.celular | mask: '(00) 0.0000-0000' }}</td>
+                    <td>{{ employee.ramal | mask: '0000-0000' }}</td>
+                    <td>{{ employee.ativo }}</td>
+                    <td class="d-flex gap-2 justify-content-end">
+                        <button type="button" class="btn btn-sm btn-outline-secondary" (click)="updateEmployee(employee.id)">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-danger" (click)="deleteEmployee(employee.id)">
+                            <i class="bi bi-trash3"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <ng-template #default>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center align-items-center">
+                    <ng-container *ngIf="!loading; else load">
+                        <div class="alert alert-light p-4 w-100" role="alert">
+                            <i class="bi bi-exclamation-triangle-fill"></i>
+                            Ops! Nenhum resultado encontrado.
+                        </div>
+                    </ng-container>
+                    <ng-template #load>
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</main>

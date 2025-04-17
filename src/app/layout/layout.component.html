@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg bg-navbar-dark position-relative sticky-top shadow-lg" data-bs-theme="dark">
+    <div class="container p-2 ps-lg-0 pe-lg-0">
+        <a class="navbar-brand fs-4" [routerLink]="['/']">
+            <img src="/assets/img/logo.svg" alt="Ludfor" class="img-fluid" width="150">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end align-items-center column-gap-4" id="navbarScroll">
+            <button class="btn border-0 pe-0 me-0 ps-0 me-0" type="button" (click)="logout()" title="Sair">
+                <i class="bi bi-box-arrow-right fs-5"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<main class="w-100">
+    <div class="container ps-0 pe-0 pt-5 mb-5">
+        <div class="row p-0 m-0">
+            <div class="col-12">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</main>

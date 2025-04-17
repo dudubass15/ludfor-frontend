@@ -1,0 +1,56 @@
+<div class="container ps-4 pe-4 pe-lg-5 ps-lg-5 d-flex flex-column justify-content-center h-100 row-gap-4 animate__animated animate__fadeIn">
+    <div class="w-100 d-flex flex-column align-items-start row-gap-3">
+        <button type="button" (click)="previous()"
+            class="btn d-flex p-0 m-0 justify-content-center align-items-center mb-4" title="Voltar">
+            <i class="bi bi-arrow-left"></i>
+        </button>
+        <h1 class="fs-1 mb-0">Cadastre-se</h1>
+        <p>Por favor, preencha os campos abaixo para criar a sua conta.</p>
+    </div>
+    <form [formGroup]="form" class="w-100 mb-4 needs-validation" [ngClass]="{'was-validated': form.touched && form.invalid}" [attr.novalidate]="form.touched && form.invalid ? true : null">
+        <div class="mb-4" getFormControl [form]="form" [field]="'nome_completo'" #nomeCompletoControl="getFormControl">
+            <app-input
+                [control]="nomeCompletoControl.getFormControl()"
+                [label]="'Nome completo'"
+                [required]="true"
+                id="nome_completo"
+            ></app-input>
+        </div>
+        <div class="mb-4" getFormControl [form]="form" [field]="'email'" #emailControl="getFormControl">
+            <app-input
+                [control]="emailControl.getFormControl()"
+                [label]="'E-mail'"
+                [required]="true"
+                [type]="'email'"
+                id="email"
+            ></app-input>
+        </div>
+        <div class="mb-4" getFormControl [form]="form" [field]="'telefone'" #telefoneControl="getFormControl">
+            <app-input
+                [control]="telefoneControl.getFormControl()"
+                [label]="'Telefone'"
+                [type]="'text'"
+                [mask]="'(00) 0000-0000'"
+                id="telefone"
+            ></app-input>
+        </div>
+        <div class="mb-4" getFormControl [form]="form" [field]="'username'" #usernameControl="getFormControl">
+            <app-input
+                [control]="usernameControl.getFormControl()"
+                [label]="'Usuário'"
+                [required]="true"
+                id="username"
+            ></app-input>
+        </div>
+        <div class="mb-4" getFormControl [form]="form" [field]="'password'" #passwordControl="getFormControl">
+            <app-input
+                [control]="passwordControl.getFormControl()"
+                [label]="'Senha'"
+                [required]="true"
+                [type]="'password'"
+                id="password"
+            ></app-input>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 mt-2" [disabled]="form.invalid" (click)="submit()">Cadastrar</button>
+    </form>
+</div>
